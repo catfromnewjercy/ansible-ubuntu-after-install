@@ -1,0 +1,17 @@
+---
+# tasks file for sonatype-nexus-deploy
+- name: create project directory
+  ansible.builtin.file:
+    path: /opt/nexus
+    state: directory
+    mode: '0755'
+
+- name: Make compose file for nexus
+  ansible.builtin.template:
+    src: ./templates/nexus-compose.j2
+    dest: /opt/nexus/docker-compose.yml
+
+- name: Run nexus compose
+  community.docker.docker_compose:
+    project_src: /opt/nexus/
+    state: present

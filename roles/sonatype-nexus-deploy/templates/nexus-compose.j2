@@ -1,0 +1,10 @@
+version: "3.5"
+services:
+  nexus:
+    ports:
+      - "8081:8081"
+    image: sonatype/nexus3:3.68.1
+    hostname: nexus
+    restart: unless-stopped
+    volumes:
+      - "/opt/nexus/nexus-data:/sonatype-work"

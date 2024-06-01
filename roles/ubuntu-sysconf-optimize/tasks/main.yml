@@ -1,2 +1,129 @@
 ---
 # tasks file for ubuntu-sysconf-optimize
+- name: Add or modify hard nofile limits for wildcard domain
+  community.general.pam_limits:
+    domain: '*'
+    limit_type: hard
+    limit_item: nofile
+    value: 1048576
+
+- name: Add or modify hard nofile limits for wildcard domain
+  community.general.pam_limits:
+    domain: '*'
+    limit_type: soft
+    limit_item: nofile
+    value: 1048576
+  
+- name: Add or modify hard nofile limits for wildcard domain
+  community.general.pam_limits:
+    domain: root
+    limit_type: hard
+    limit_item: nofile
+    value: 1048576
+
+- name: Add or modify hard nofile limits for wildcard domain
+  community.general.pam_limits:
+    domain: root
+    limit_type: soft
+    limit_item: nofile
+    value: 1048576
+
+- name: Add or modify memlock, both soft and hard, limit for the user james with a comment
+  community.general.pam_limits:
+    domain: '*'
+    limit_type: soft
+    limit_item: memlock
+    value: unlimited
+    comment: unlimited memory lock
+
+- name: Add or modify memlock, both soft and hard, limit for the user james with a comment
+  community.general.pam_limits:
+    domain: '*'
+    limit_type: hard
+    limit_item: memlock
+    value: unlimited
+    comment: unlimited memory lock
+
+- name: Add or modify memlock, both soft and hard, limit for the user james with a comment
+  community.general.pam_limits:
+    domain: root
+    limit_type: soft
+    limit_item: memlock
+    value: unlimited
+    comment: unlimited memory lock
+
+- name: Add or modify memlock, both soft and hard, limit for the user james with a comment
+  community.general.pam_limits:
+    domain: root
+    limit_type: hard
+    limit_item: memlock
+    value: unlimited
+    comment: unlimited memory lock
+
+- ansible.posix.sysctl:
+    name: net.ipv4.ip_forward
+    value: '1'
+    sysctl_set: true
+    state: present
+    reload: true
+
+- ansible.posix.sysctl:
+    name: fs.inotify.max_queued_events
+    value: '1048576'
+    sysctl_set: true
+    state: present
+
+- ansible.posix.sysctl:
+    name: fs.inotify.max_user_instances
+    value: '1048576'
+    sysctl_set: true
+    state: present
+
+- ansible.posix.sysctl:
+    name: fs.inotify.max_user_watches
+    value: '1048576'
+    sysctl_set: true
+    state: present
+
+- ansible.posix.sysctl:
+    name: net.ipv4.neigh.default.gc_thresh3
+    value: '1048576'
+    sysctl_set: true
+    state: present
+
+- ansible.posix.sysctl:
+    name: net.ipv6.neigh.default.gc_thresh3
+    value: '1048576'
+    sysctl_set: true
+    state: present
+
+- ansible.posix.sysctl:
+    name: vm.max_map_count
+    value: '262144'
+    sysctl_set: true
+    state: present
+
+- ansible.posix.sysctl:
+    name: vm.swapinness
+    value: '10'
+    sysctl_set: true
+    state: present
+
+- ansible.posix.sysctl:
+    name: vm.vfs_cache_pressure
+    value: '50'
+    sysctl_set: true
+    state: present
+
+- ansible.posix.sysctl:
+    name: net.ipv4.tcp_rmem
+    value: '4096 87380 16777216'
+    sysctl_set: true
+    state: present
+
+- ansible.posix.sysctl:
+    name: net.ipv4.tcp_wmem
+    value: '4096 87380 16777216'
+    sysctl_set: true
+    state: present
+    reload: true

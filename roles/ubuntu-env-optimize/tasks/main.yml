@@ -3,3 +3,7 @@
 - name: Set timezone to {{ TZ }}
   community.general.timezone:
     name: {{ TZ }}
+
+- name: Set a hostname
+  ansible.builtin.hostname:
+    name: {{ hostname }}

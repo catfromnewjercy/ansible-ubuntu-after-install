@@ -1,0 +1,37 @@
+---
+# tasks file for docker-install
+- name: Install ca-certificates curl
+  ansible.builtin.apt:
+    name:
+      - ca-certificates
+      - curl
+    state: present
+    update_cache: yes
+
+- name: Create directory for keyring
+  ansible.builtin.file:
+    path: /etc/apt/keyrings
+    state: directory
+    mode: "0755"
+
+- name: Download foo.conf
+  ansible.builtin.get_url:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    dest: /etc/apt/keyrings/docker.asc
+    mode: '644'
+
+- name: Make docker.list for apt
+  ansible.builtin.template:
+    src: ./templates/docker.list.j2
+    dest: /etc/apt/source.list.d/docker.list
+
+- name: Install docker packages
+  ansible.builtin.apt:
+    name: 
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+    state: latest
+    update_cache: true

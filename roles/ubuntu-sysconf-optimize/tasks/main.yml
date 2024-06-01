@@ -104,7 +104,7 @@
     state: present
 
 - ansible.posix.sysctl:
-    name: vm.swapinness
+    name: vm.swappiness
     value: '10'
     sysctl_set: true
     state: present

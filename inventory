@@ -1,21 +1,21 @@
-[baremetall-servers:child]
+[all:vars]
+ansible_user=ansible
+ansible_ssh_private_key_file=id_rsa_zeinet
+[all:children]
 runtime
-common
-historian
 
-[baremetall-server:vars]
+[baremetall-servers]
+runtime
+
+[baremetall-servers:vars]
 ansible_user=ansible
 TZ=Asia/Almaty
 
 [runtime]
-sv1	host_name=sv1
-sv2	host_name=sv2
-sv3	host_name=sv3
+sv1ndc ansible_host=10.210.10.11
 
-[common]
-sv4	host_name=sv4
-sv5	host_name=sv5
+[runtime:vars]
 
 [historian]
-sv6	host_name=sv6
-sv7	host_name=sv7
+
+[historian:vars]

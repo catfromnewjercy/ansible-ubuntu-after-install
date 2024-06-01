@@ -1,5 +1,5 @@
 ---
 # tasks file for ubuntu-env-optimize
-- name: Set timezone to Asia/Tokyo
+- name: Set timezone to {{ TZ }}
   community.general.timezone:
-    name: Asia/Almaty
+    name: {{ TZ }}

@@ -12,6 +12,6 @@
     dest: /opt/nexus/docker-compose.yml
 
 - name: Run nexus compose
-  community.docker.docker_compose:
+  community.docker.docker_compose_v2:
     project_src: /opt/nexus/
     state: present

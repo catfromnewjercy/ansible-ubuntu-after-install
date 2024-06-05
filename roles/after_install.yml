@@ -1,9 +1,19 @@
-- hosts: runtime
+- hosts: all
   become: true
   tasks:
     - ansible.builtin.import_role:
         name: roles/ubuntu-sysconf-optimize
+
     - ansible.builtin.import_role:
         name: roles/ubuntu-env-optimize
+
     - ansible.builtin.import_role:
         name: roles/docker-install
+
+- name: Execute Sonatype Nexus Deploy
+  hosts: sonatype
+  become: true
+  tasks:
+    - ansible.builtin.import_role:
+        name: roles/sonatype-nexus-deploy
+      when: groups['sonatype'] | length > 0

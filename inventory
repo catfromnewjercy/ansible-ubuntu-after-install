@@ -1,16 +1,28 @@
+[all]
+sv1ndc ansible_host=10.210.10.11
+sv2ndc ansible_host=10.210.10.12
+sv3ndc ansible_host=10.210.10.13
+sv4ndc ansible_host=10.210.10.14
+sv5ndc ansible_host=10.210.10.15
+sv6ndc ansible_host=10.210.10.16
+sv6ndc ansible_host=10.210.10.17
+
 [all:vars]
 ansible_user=ansible
 ansible_ssh_private_key_file=
 
 [runtime]
-sv1ndc ansible_host=10.210.10.11
-sv2ndc ansible_host=10.210.10.12
-sv3ndc ansible_host=10.210.10.13
+sv1ndc
+sv2ndc
+sv3ndc
 
 [common]
-sv4ndc  ansible_host=10.210.10.14
-sv5ndc  ansible_host=10.210.10.15
+sv4ndc
+sv5ndc
 
 [historyan]
-sv6ndc  ansible_host=10.210.10.16
-sv6ndc  ansible_host=10.210.10.17
+sv6ndc
+sv7ndc
+
+[sonatype]
+sv7ndc

@@ -19,6 +19,10 @@ su ansible
 
 ```
 $ ssh-keygen -t rsa
+```
+
+*   Получаем примерно такой вывод:
+```
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/ansible/.ssh/id_rsa):
 Created directory '/home/ansible/.ssh'.

@@ -1,22 +1,16 @@
 [all:vars]
-TZ=Asia/Almaty
 ansible_user=ansible
 ansible_ssh_private_key_file=
-[all:children]
-runtime
-
-[baremetall-servers]
-runtime
-
-[baremetall-servers:vars]
-ansible_user=ansible
-
 
 [runtime]
-sv1ndc ansible_host=
+sv1ndc ansible_host=10.210.10.11
+sv2ndc ansible_host=10.210.10.12
+sv3ndc ansible_host=10.210.10.13
 
-[runtime:vars]
+[common]
+sv4ndc  ansible_host=10.210.10.14
+sv5ndc  ansible_host=10.210.10.15
 
-[historian]
-
-[historian:vars]
+[historyan]
+sv6ndc  ansible_host=10.210.10.16
+sv6ndc  ansible_host=10.210.10.17

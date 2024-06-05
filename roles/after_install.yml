@@ -1,0 +1,9 @@
+- hosts: runtime
+  become: true
+  tasks:
+    - ansible.builtin.import_role:
+        name: roles/ubuntu-sysconf-optimize
+    - ansible.builtin.import_role:
+        name: roles/ubuntu-env-optimize
+    - ansible.builtin.import_role:
+        name: roles/docker-install

@@ -70,6 +70,18 @@ useradd -m -s /bin/bash ansible
 passwd ansible
 ````
 
+
+*   Скачиваем репозиторий
+
+```
+$ git clone https://github.com/catfromnewjercy/ansible-ubuntu-after-install.git
+```
+*   Переходим в папку репозитория
+
+```
+$   cd ansible-ubuntu-after-install
+```
+
 *   Для запуска нашего плейбука необходимо подготовить файл инвентаризации [inventory](inventory)
 
 *   В первую очередь указываем путь до нашего приватного сертификата в строчке ansible_ssh_private_key_file

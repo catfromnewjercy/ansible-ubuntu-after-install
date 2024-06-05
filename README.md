@@ -70,7 +70,7 @@ useradd -m -s /bin/bash ansible
 passwd ansible
 ````
 
-*   Для запуска нашего плейбука необходимо подготовить файл инвентаризации [a relative link](inventory)
+*   Для запуска нашего плейбука необходимо подготовить файл инвентаризации [inventory](inventory)
 
 *   В первую очередь указываем путь до нашего приватного сертификата в строчке ansible_ssh_private_key_file
 

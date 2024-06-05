@@ -58,19 +58,6 @@ apt update && apt install pipx
 pipx install ansible
 ```
 
-*   Для запуска плейбука, нам необходимо для начала создать пользователя на каждом из серверов для ansible
-
-```
-useradd -m -s /bin/bash ansible
-```
-
-*   Задаём пароль для пользователя:
-
-```
-passwd ansible
-````
-
-
 *   Скачиваем репозиторий
 
 ```
@@ -96,3 +83,5 @@ ansible_ssh_private_key_file=/home/ansible/.ssh/id_rsa
 *   Группа [common]  - вспомогательные сервера
 *   Группа [historyan] - сервера для historyan
 *   Группа [sonatype] - группа, куда будет установлен sonatype-nexus
+
+*   Далее, необходимо создать пользователя ansible на всех наших подконтрольных серверах с помощью инструкции [ansible_user_create](ansible_user_create.md)

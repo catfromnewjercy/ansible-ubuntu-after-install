@@ -5,6 +5,7 @@
     name:
       - ca-certificates
       - curl
+      - mc
     state: present
     update_cache: yes
 
@@ -14,7 +15,7 @@
     state: directory
     mode: "0755"
 
-- name: Download foo.conf
+- name: Download docker repo key
   ansible.builtin.get_url:
     url: https://download.docker.com/linux/ubuntu/gpg
     dest: /etc/apt/keyrings/docker.asc

@@ -1,0 +1,25 @@
+---
+# tasks file for copying sources.list based on the OS
+
+- name: Copy the appropriate sources.list template based on the distribution
+  ansible.builtin.template:
+    src: "source.list.{{ ansible_distribution | lower }}.{{ ansible_distribution_major_version }}.j2"
+    dest: "/etc/apt/sources.list"
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Copy zabbix source.list template based on the distribution
+  ansible.builtin.template:
+    src: "zabbix.list.{{ ansible_distribution | lower }}.{{ ansible_distribution_major_version }}.j2"
+    dest: "/etc/apt/sources.list.d/zabbix.list"
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Update all Debian/Ubuntu packages to their latest version
+  ansible.builtin.apt:
+    name: "*"
+    state: latest
+    update_cache: true
+

@@ -17,7 +17,7 @@
 
 - name: Download docker repo key
   ansible.builtin.get_url:
-    url: https://download.docker.com/linux/ubuntu/gpg
+    url: http://10.210.2.103/repository/packages/docker/gpg
     dest: /etc/apt/keyrings/docker.asc
     mode: '644'
 

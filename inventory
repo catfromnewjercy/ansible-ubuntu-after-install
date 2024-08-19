@@ -1,20 +1,30 @@
 [all]
-sv1ndc ansible_host=10.210.10.11
-sv2ndc ansible_host=10.210.10.12
-sv3ndc ansible_host=10.210.10.13
-sv4ndc ansible_host=10.210.10.14
-sv5ndc ansible_host=10.210.10.15
-sv6ndc ansible_host=10.210.10.16
-sv6ndc ansible_host=10.210.10.17
+sv1ndc      ansible_host=10.210.2.19 hostname=main-rt-server1
+sv2ndc      ansible_host=10.210.2.20 hostname=main-rt-server2
+sv3ndc      ansible_host=10.210.2.21 hostname=main-rt-server3
+sv4ndc      ansible_host=10.210.2.22 hostname=pve01
+sv5ndc      ansible_host=10.210.2.23 hostname=pve02
+sv6ndc      ansible_host=10.210.2.24 hostname=main-his-server1
+sv7ndc      ansible_host=10.210.2.25 hostname=main-his-server2
+zabbix01    ansible_host=10.210.2.100 hostname=zabbix
+gitlab01    ansible_host=10.210.2.101 hostname=gitlab
+bpm01       ansible_host=10.210.2.102 hostname=bpm
+nexus       ansible_host=10.210.2.103 hostname=nexus
 
 [all:vars]
 ansible_user=ansible
-ansible_ssh_private_key_file=
+ansible_ssh_private_key_file=/home/ansible/.ssh/id_rsa
+TZ=Asia/Almaty
 
 [runtime]
 sv1ndc
 sv2ndc
 sv3ndc
+sv6ndc
+sv7ndc
+zabbix01
+gitlab01
+bpm01
 
 [common]
 sv4ndc
@@ -25,4 +35,5 @@ sv6ndc
 sv7ndc
 
 [sonatype]
-sv7ndc
+
+[docker]

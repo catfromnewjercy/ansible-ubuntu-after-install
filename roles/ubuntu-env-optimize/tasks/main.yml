@@ -1,9 +1,9 @@
 ---
 # tasks file for ubuntu-env-optimize
-- name: Set timezone to {{ TZ }}
+- name: Set timezone to {{ local_timezone }}
   community.general.timezone:
-    name: {{ TZ }}
+    name: "{{ local_timezone }}"
 
 - name: Set a hostname
   ansible.builtin.hostname:
-    name: {{ hostname }}
+    name: "{{ hostname }}"

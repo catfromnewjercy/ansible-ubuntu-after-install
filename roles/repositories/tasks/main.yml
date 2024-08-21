@@ -1,6 +1,41 @@
 ---
 # tasks file for copying sources.list based on the OS
 
+- name: Install package
+  ansible.builtin.apt:
+    deb: http://10.210.2.103/repository/packages/debian/zabbix-release_7.0-2+debian12_all.deb
+    force: yes
+    install_recommends: no
+    dpkg_options: "force-confdef,force-confold"
+  environment:
+    DEBIAN_FRONTEND: noninteractive
+  when: ansible_distribution == 'Debian'
+
+- name: Install package
+  ansible.builtin.apt:
+    deb: http://10.210.2.103/repository/packages/ubuntu/zabbix-release_7.0-2+ubuntu24.04_all.deb
+    force: yes
+    install_recommends: no
+    dpkg_options: "force-confdef,force-confold"
+  environment:
+    DEBIAN_FRONTEND: noninteractive
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Delete unused files
+  ansible.builtin.file:
+    path: /etc/apt/sources.list.d/zabbix.list.dpkg-dist
+    state: absent
+
+- name: Delete unused files
+  ansible.builtin.file:
+    path: /etc/apt/sources.list.d/zabbix-tools.list
+    state: absent
+
+- name: Delete unused files
+  ansible.builtin.file:
+    path: /etc/apt/sources.list.d/docker.list
+    state: absent
+
 - name: Copy the appropriate sources.list template based on the distribution
   ansible.builtin.template:
     src: "source.list.{{ ansible_distribution | lower }}.{{ ansible_distribution_major_version }}.j2"
@@ -19,7 +54,5 @@
 
 - name: Update all Debian/Ubuntu packages to their latest version
   ansible.builtin.apt:
-    name: "*"
-    state: latest
     update_cache: true
 

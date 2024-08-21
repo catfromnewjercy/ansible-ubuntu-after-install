@@ -13,7 +13,7 @@
     limit_type: soft
     limit_item: nofile
     value: 1048576
-  
+
 - name: Add or modify hard nofile limits for wildcard domain
   community.general.pam_limits:
     domain: root

@@ -13,10 +13,8 @@ nexus       ansible_host=10.210.2.103 hostname=nexus
 
 [all:vars]
 ansible_user=ansible
+ansible_ssh_pass=
 ansible_ssh_private_key_file=/home/ansible/.ssh/id_rsa
-TZ=Asia/Almaty
-broker_port=517
-broker_address=1.1.1.1
 
 [runtime]
 sv1ndc
@@ -27,6 +25,9 @@ sv7ndc
 zabbix01
 gitlab01
 bpm01
+
+[runtime:vars]
+local_timezone="Asia/Almaty"
 
 [common]
 sv4ndc
@@ -39,3 +40,14 @@ sv7ndc
 [sonatype]
 
 [docker]
+bpm01
+gitlab01
+zabbix01
+
+[faceplate]
+sv1ndc
+sv2ndc
+sv3ndc
+
+[faceplate:vars]
+package_url="10.210.2.103/repository/packages/faceplate/2.0.2.tar.gz"

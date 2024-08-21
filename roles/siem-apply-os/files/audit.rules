@@ -1,0 +1,231 @@
+-D
+-b 32768
+-f 1
+-i
+-a exclude,always -F msgtype=BPRM_FCAPS
+-a exclude,always -F msgtype=CRED_DISP
+-a exclude,always -F msgtype=CRED_REFR
+-a exclude,always -F msgtype=CRYPTO_SESSION
+-a exclude,always -F msgtype=CRYPTO_KEY_USER
+-a exclude,always -F msgtype=LOGIN
+-a exclude,always -F msgtype=NETFILTER_CFG
+-a exclude,always -F msgtype=SOCKADDR
+-a exclude,always -F msgtype=USER_ACCT
+-a exclude,always -F msgtype=USER_ERR
+-a exclude,always -F msgtype=USER_LOGOUT
+-a exclude,always -F msgtype=USER_CMD
+-a exit,never -F path=/bin/basename
+-a exit,never -F path=/bin/cut
+-a exit,never -F path=/bin/date
+-a exit,never -F path=/bin/env
+-a exit,never -F path=/bin/hostname
+-a exit,never -F path=/bin/id
+-a exit,never -F path=/bin/logger
+-a exit,never -F path=/bin/run-parts
+-a exit,never -F path=/bin/sleep
+-a exit,never -F path=/bin/systemctl
+-a exit,never -F path=/opt/cni/bin/calico
+-a exit,never -F path=/opt/cni/bin/portmap
+-a exit,never -F path=/sbin/ipset
+-a exit,never -F path=/sbin/xtables-multi
+-a exit,never -F path=/usr/bin/alligator
+-a exit,never -F path=/usr/bin/apt-config
+-a exit,never -F path=/usr/bin/basename
+-a exit,never -F path=/usr/bin/cut
+-a exit,never -F path=/usr/bin/date
+-a exit,never -F path=/usr/bin/df
+-a exit,never -F path=/usr/bin/dircolors
+-a exit,never -F path=/usr/bin/dirname
+-a exit,never -F path=/usr/bin/docker-containerd
+-a exit,never -F path=/usr/bin/docker-containerd-shim
+-a exit,never -F path=/usr/bin/docker-init
+-a exit,never -F path=/usr/bin/docker-runc
+-a exit,never -F path=/usr/bin/dockerd
+-a exit,never -F path=/usr/bin/dockerd-current
+-a exit,never -F path=/usr/bin/du
+-a exit,never -F path=/usr/bin/env
+-a exit,never -F path=/usr/bin/flock
+-a exit,never -F path=/usr/bin/getconf
+-a exit,never -F path=/usr/bin/host
+-a exit,never -F path=/usr/bin/hostname
+-a exit,never -F path=/usr/bin/id
+-a exit,never -F path=/usr/bin/jq
+-a exit,never -F path=/usr/bin/locale
+-a exit,never -F path=/usr/bin/locale-check
+-a exit,never -F path=/usr/bin/logger
+-a exit,never -F path=/usr/bin/man
+-a exit,never -F path=/usr/bin/manpath
+-a exit,never -F path=/usr/bin/mesg
+-a exit,never -F path=/usr/bin/nice
+-a exit,never -F path=/usr/bin/openssl
+-a exit,never -F path=/usr/bin/pager
+-a exit,never -F path=/usr/bin/readlink
+-a exit,never -F path=/usr/bin/runc
+-a exit,never -F path=/usr/bin/sleep
+-a exit,never -F path=/usr/bin/stat
+-a exit,never -F path=/usr/bin/stty
+-a exit,never -F path=/usr/bin/sv
+-a exit,never -F path=/usr/bin/tput
+-a exit,never -F path=/usr/bin/tr
+-a exit,never -F path=/usr/bin/tty
+-a exit,never -F path=/usr/bin/udevadm
+-a exit,never -F path=/usr/bin/uniq
+-a exit,never -F path=/usr/bin/vmtoolsd
+-a exit,never -F path=/usr/bin/wc
+-a exit,never -F path=/usr/bin/which
+-a exit,never -F path=/usr/lib/vmware-tools
+-a exit,never -F path=/usr/lib64/sa/sadc
+-a exit,never -F path=/usr/libexec/openssh/ssh-keysign
+-a exit,never -F path=/usr/local/bin/pager
+-a exit,never -F path=/usr/local/bin/run-parts
+-a exit,never -F path=/usr/local/sbin/run-parts
+-a exit,never -F path=/usr/sbin/chronyd
+-a exit,never -F path=/usr/sbin/cron
+-a exit,never -F path=/usr/sbin/crond
+-a exit,never -F path=/usr/sbin/ebtables-restore
+-a exit,never -F path=/usr/sbin/exim4
+-a exit,never -F path=/usr/sbin/fping
+-a exit,never -F path=/usr/sbin/fping6
+-a exit,never -F path=/usr/sbin/ip
+-a exit,never -F path=/usr/sbin/ipset
+-a exit,never -F path=/usr/sbin/ldconfig
+-a exit,never -F path=/usr/sbin/logrotate
+-a exit,never -F path=/usr/sbin/lvm
+-a exit,never -F path=/usr/sbin/ntpd
+-a exit,never -F path=/usr/sbin/ntpq
+-a exit,never -F path=/usr/sbin/run-parts
+-a exit,never -F path=/usr/sbin/xtables-legacy-multi
+-a exit,never -F path=/usr/sbin/xtables-multi
+-w /etc/aliases -p wa -k Modify_MAIL_CFG_files_v0.1.0
+-w /etc/anacrontab -p wa -k Modify_ANACRONTAB_CFG_files_v0.1.0
+-w /etc/at.allow -p wa -k Modify_AT_CFG_files_v0.1.0
+-w /etc/at.deny -p wa -k Modify_AT_CFG_files_v0.1.0
+-w /etc/audisp/ -p wa -k Modify_Auditd_CFG_files_v0.1.0
+-w /etc/audit/ -p wa -k Modify_Auditd_CFG_files_v0.1.0
+-w /etc/auditbeat/ -p wa -k Modify_Auditbeat_CFG_files_v0.1.0
+-w /etc/bash.bashrc -p wa -k Modify_Profile_and_Bashrc_CFG_files_v0.1.0
+-w /etc/bashrc -p wa -k Modify_Profile_and_Bashrc_CFG_files_v0.1.0
+-w /etc/cron.allow -p wa -k Modify_CRON_CFG_files_v0.1.0
+-w /etc/cron.d/ -p wa -k Modify_CRON_CFG_files_v0.1.0
+-w /etc/cron.daily/ -p wa -k Modify_CRON_CFG_files_v0.1.0
+-w /etc/cron.deny -p wa -k Modify_CRON_CFG_files_v0.1.0
+-w /etc/cron.hourly/ -p wa -k Modify_CRON_CFG_files_v0.1.0
+-w /etc/cron.monthly/ -p wa -k Modify_CRON_CFG_files_v0.1.0
+-w /etc/cron.weekly/ -p wa -k Modify_CRON_CFG_files_v0.1.0
+-w /etc/crontab -p wa -k Modify_CRON_CFG_files_v0.1.0
+-w /etc/csh.cshrc -p wa -k Modify_CSHRC_CFG_files_v0.1.0
+-w /etc/csh.login -p wa -k Modify_CSH_Login_CFG_files_v0.1.0
+-w /etc/csh.logout -p wa -k Modify_CSH_Logout_CFG_files_v0.1.0
+-w /etc/group -p wa -k Modify_User_and_Group_CFG_files_v0.1.0
+-w /etc/gshadow -p wa -k Modify_User_and_Group_CFG_files_v0.1.0
+-w /etc/hosts -p wa -k Modify_HOST_CFG_file_v0.1.0
+-w /etc/init.d/ -p wa -k Modify_LSBINIT_CFG_files_v0.1.0
+-w /etc/init/ -p wa -k Modify_LSBINIT_CFG_files_v0.1.0
+-w /etc/inittab -p wa -k Modify_LSBINIT_CFG_files_v0.1.0
+-w /etc/kshrc -p wa -k Modify_KSHRC_CFG_files_v0.1.0
+-w /etc/kubernetes/ -p wa -k Modify_Kubernetes_CFG_files_v0.1.0
+-w /etc/ld.so.conf -p wa -k Modify_LD.SO_CFG_files_v0.1.0
+-w /etc/ld.so.conf.d/ -p wa -k Modify_LD.SO_CFG_files_v0.1.0
+-w /etc/ld.so.preload -p w -k Modify_LD.SO_CFG_files_v0.1.0
+-w /etc/libaudit.conf -p wa -k Modify_Auditd_CFG_files_v0.1.0
+-w /etc/localtime -p wa -k Modify_LOCALTIME_v0.1.0
+-w /etc/login.defs -p wa -k Modify_CFG_login_defs_v0.1.0
+-w /etc/modprobe.conf -p wa -k Modify_Kernel_Modules_and_Extensions_v0.1.0
+-w /etc/modprobe.d/ -p wa -k Modify_Kernel_Modules_and_Extensions_v0.1.0
+-w /etc/modules -p wa -k Modify_Kernel_Modules_and_Extensions_v0.1.0
+-w /etc/modules-load.d/ -p wa -k Modify_Kernel_Modules_and_Extensions_v0.1.0
+-w /etc/network/ -p wa -k Modify_NETWOTRK_CFG_files_v0.1.0
+-w /etc/pam.conf -p wa -k Modify_PAM_CFG_files_v0.1.0
+-w /etc/pam.d/ -p wa -k Modify_PAM_CFG_files_v0.1.0
+-w /etc/passwd -p wa -k Modify_User_and_Group_CFG_files_v0.1.0
+-w /etc/postfix/ -p wa -k Modify_MAIL_CFG_files_v0.1.0
+-w /etc/profile -p wa -k Modify_Profile_and_Bashrc_CFG_files_v0.1.0
+-w /etc/profile.d/ -p wa -k Modify_Profile_and_Bashrc_CFG_files_v0.1.0
+-w /etc/rc.d/ -p wa -k Modify_SysVInit_CFG_files_v0.1.0
+-w /etc/rc.local -p wa -k Modify_INIT_CFG_files_v0.1.0
+-w /etc/rc0.d/ -p wa -k Modify_SysVInit_CFG_files_v0.1.0
+-w /etc/rc1.d/ -p wa -k Modify_SysVInit_CFG_files_v0.1.0
+-w /etc/rc2.d/ -p wa -k Modify_SysVInit_CFG_files_v0.1.0
+-w /etc/rc3.d/ -p wa -k Modify_SysVInit_CFG_files_v0.1.0
+-w /etc/rc4.d/ -p wa -k Modify_SysVInit_CFG_files_v0.1.0
+-w /etc/rc5.d/ -p wa -k Modify_SysVInit_CFG_files_v0.1.0
+-w /etc/rc6.d/ -p wa -k Modify_SysVInit_CFG_files_v0.1.0
+-w /etc/rcS.d/ -p wa -k Modify_SysVInit_CFG_files_v0.1.0
+-w /etc/resolv.conf -p wa -k Modify_RESOLV_CFG_file_v0.1.0
+-w /etc/rsyslog.conf -p wa -k Modify_RSyslog_CFG_files_v0.1.0
+-w /etc/rsyslog.d/ -p wa -k Modify_RSyslog_CFG_files_v0.1.0
+-w /etc/securetty -p wa -k Modify_CFG_securetty_v0.1.0
+-w /etc/security/ -p wa -k Modify_PAM_CFG_files_v0.1.0
+-w /etc/selinux/ -p wa -k Modify_MAC_Policy_CFG_files_v0.1.0
+-w /etc/shadow -p wa -k Modify_User_and_Group_CFG_files_v0.1.0
+-w /etc/shells -p wa -k Modify_Profile_and_Bashrc_CFG_files_v0.1.0
+-w /etc/skel/.bash_profile -p wa -k Modify_Profile_and_Bashrc_CFG_files_v0.1.0
+-w /etc/skel/.bashrc -p wa -k Modify_Profile_and_Bashrc_CFG_files_v0.1.0
+-w /etc/ssh/sshd_config -p wa -k Modify_SSHD_CFG_file_v0.1.0
+-w /etc/sudoers -p wa -k Modify_SUDO_CFG_files_v0.1.0
+-w /etc/sudoers.d/ -p wa -k Modify_SUDO_CFG_files_v0.1.0
+-w /etc/sysconfig/auditd -p wa -k Modify_Auditd_CFG_files_v0.1.0
+-w /etc/sysconfig/init -p wa -k Modify_INIT_CFG_files_v0.1.0
+-w /etc/sysconfig/network -p wa -k Modify_NETWORK_CFG_files_v0.1.0
+-w /etc/sysconfig/network-scripts/ -p wa -k Modify_NETWORK_CFG_files_v0.1.0
+-w /etc/sysctl.conf -p wa -k Modify_Sysctl_CFG_v0.1.0
+-w /etc/sysctl.d/ -p wa -k Modify_Sysctl_CFG_v0.1.0
+-w /etc/syslog-ng/ -p wa -k Modify_Syslog-ng_CFG_files_v0.1.0
+-w /etc/systemd/system/ -p wa -k Modify_SYSTEMD_CFG_files_v0.1.0
+-w /etc/systemd/user/ -p wa -k Modify_SYSTEMD_CFG_files_v0.1.0
+-w /etc/xinetd.conf -p wa -k Modify_Xinetd_CFG_files_v0.1.0
+-w /etc/xinetd.d/ -p wa -k Modify_Xinetd_CFG_files_v0.1.0
+-w /etc/zsh/zlogin -p wa -k Modify_ZSH_Login_CFG_files_v0.1.0
+-w /etc/zsh/zlogout -p wa -k Modify_ZSH_Logout_CFG_files_v0.1.0
+-w /etc/zsh/zprofile -p wa -k Modify_ZSH_Profile_CFG_files_v0.1.0
+-w /etc/zsh/zshenv -p wa -k Modify_ZSHENV_CFG_files_v0.1.0
+-w /etc/zsh/zshrc -p wa -k Modify_ZSHRC_CFG_files_v0.1.0
+-w /etc/zshrc -p wa -k Modify_ZSHRC_CFG_files_v0.1.0
+-w /lib/systemd/system/ -p wa -k Modify_SYSTEMD_CFG_files_v0.1.0
+-w /lib/systemd/user/ -p wa -k Modify_SYSTEMD_CFG_files_v0.1.0
+-w /root/.bash_login -p wa -k Modify_BASH_Login_CFG_files_v0.1.0
+-w /root/.bash_logout -p wa -k Modify_BASH_Logout_CFG_files_v0.1.0
+-w /root/.bash_profile -p wa -k Modify_BASH_Profile_CFG_files_v0.1.0
+-w /root/.bashrc -p wa -k Modify_BASHRC_CFG_files_v0.1.0
+-w /root/.config/systemd/user.control/ -p wa -k Modify_SYSTEMD_CFG_files_v0.1.0
+-w /root/.config/systemd/user.control/user/ -p wa -k Modify_SYSTEMD_CFG_files_v0.1.0
+-w /root/.cshrc -p wa -k Modify_CSHRC_CFG_files_v0.1.0
+-w /root/.ksh -p wa -k Modify_KSHRC_CFG_files_v0.1.0
+-w /root/.local/share/systemd/user/ -p wa -k Modify_SYSTEMD_CFG_files_v0.1.0
+-w /root/.logout -p wa -k Modify_BASH_Logout_CFG_files_v0.1.0
+-w /root/.profile -p wa -k Modify_Profile_and_Bashrc_CFG_files_v0.1.0
+-w /root/.ssh/authorized_keys -p wa -k Modify_AUTHKEYS_CFG_file_v0.1.0
+-w /root/.ssh/config -p wa -k Modify_AUTH_CFG_file_v0.1.0
+-w /root/.tcsh -p wa -k Modify_CSH_Logout_CFG_files_v0.1.0
+-w /root/.zlogin -p wa -k Modify_ZSH_Login_CFG_files_v0.1.0
+-w /root/.zlogout -p wa -k Modify_ZSH_Logout_CFG_files_v0.1.0
+-w /root/.zprofile -p wa -k Modify_ZSH_Profile_CFG_files_v0.1.0
+-w /run/systemd/system/ -p wa -k Modify_SYSTEMD_CFG_files_v0.1.0
+-w /usr/lib/systemd/system/ -p wa -k Modify_SYSTEMD_CFG_files_v0.1.0
+-w /usr/lib/systemd/user/ -p wa -k Modify_SYSTEMD_CFG_files_v0.1.0
+-w /var/log/auth.log -p wa -k Modify_AUTH_LOG_files_v0.1.0
+-w /var/log/boot.log -p wa -k Modify_BOOT_Log_v0.1.0
+-w /var/log/cron -p wa -k Modify_CRON_Log_v0.1.0
+-w /var/log/dmesg -p wa -k Modify_DMESG_Log_v0.1.0
+-w /var/log/faillog -p wa -k Modify_FAILLOG_Log_v0.1.0
+-w /var/log/lastlog -p wa -k Modify_LASTLOG_Log_v0.1.0
+-w /var/log/secure -p wa -k Modify_SECURE_LOG_files_v0.1.0
+-w /var/log/tallylog -p wa -k Modify_TALLYLOG_Log_v0.1.0
+-w /var/run/faillock/ -p wa -k Modify_FAILLOCK_files_v0.1.0
+-w /var/spool/anacron/ -p wa -k Modify_ANACRON_CFG_files_v0.1.0
+-w /var/spool/at/ -p wa -k Modify_AT_CFG_files_v0.1.0
+-w /var/spool/cron/ -p wa -k Modify_CRON_CFG_files_v0.1.0
+-a exit,always -F arch=b32 -S execve -k ALL_Execve_v0.1.0
+-a exit,always -F arch=b64 -S execve -k ALL_Execve_v0.1.0
+-a exit,always -F arch=b32 -S settimeofday,stime -k Modify_TIME_v0.1.0
+-a exit,always -F arch=b64 -S settimeofday -k Modify_TIME_v0.1.0
+-a exit,always -F arch=b32 -S clock_settime -F a0=0x0 -k Modify_TIME_v0.1.0
+-a exit,always -F arch=b64 -S clock_settime -F a0=0x0 -k Modify_TIME_v0.1.0
+-a exit,always -F arch=b32 -S finit_module -S init_module -S delete_module -F auid!=-1 -k Loading_and_Unloading_a_Kernel_Module_v0.1.0
+-a exit,always -F arch=b64 -S finit_module -S init_module -S delete_module -F auid!=-1 -k Loading_and_Unloading_a_Kernel_Module_v0.1.0
+-a exit,always -F arch=b32 -S ptrace -k Ptrace_СALL_Process_Injection_v0.1.0
+-a exit,always -F arch=b64 -S ptrace -k Ptrace_СALL_Process_Injection_v0.1.0
+-a exit,always -F arch=b32 -S unlink -S unlinkat -S rename -S renameat -S rmdir -F auid>=0 -F auid!=-1 -F dir=/var/log/ -k Remove_Logs_v0.1.0
+-a exit,always -F arch=b64 -S unlink -S unlinkat -S rename -S renameat -S rmdir -F auid>=0 -F auid!=-1 -F dir=/var/log/ -k Remove_Logs_v0.1.0
+-a exit,always -F arch=b32 -S unlink -S unlinkat -S rename -S renameat -S rmdir -F dir=/root/.bash_history -k Remove_Bash_History_v0.1.0
+-a exit,always -F arch=b64 -S unlink -S unlinkat -S rename -S renameat -S rmdir -F dir=/root/.bash_history -k Remove_Bash_History_v0.1.0

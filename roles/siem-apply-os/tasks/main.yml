@@ -1,0 +1,104 @@
+---
+# tasks file for siem-apply-os
+- name: Install auditd
+  ansible.builtin.apt:
+    name:
+      - auditd
+      - audispd-plugins
+      - rsyslog
+    state: present
+    update_cache: yes
+
+- name: backup auditd default config files
+  ansible.builtin.shell:
+    cmd: cp /etc/auditd/auditd.conf /etc/auditd/audotd.conf.bak
+
+- name: backup auditd default config files
+  ansible.builtin.shell:
+    cmd: cp /etc/auditd/auditd.rules /etc/auditd/auditd.rules.bak
+
+- name: backup auditd default config files
+  ansible.builtin.shell:
+    cmd: cp /etc/auditd/rules.d/audit.rules /etc/auditd/rules.d/audit.rules.bak
+
+- name: Copy new rules 
+  ansible.builtin.copy:
+    src: audit.rules
+    dest: /etc/auditd/rules.d/audit.rules
+
+- name: Get version of auditd
+  ansible.builtin.command: "auditctl -v | awk '{print $3}' | cut -d '.' -f 1"
+  register: auditd_version
+
+- name: Set syslog.conf for version different versions (2 or 3)
+  ansible.builtin.template:
+    src: syslog.conf_3.j2
+    dest: /etc/audit/plugins.d/syslog.conf
+  when: auditd_version.stdout == "3"
+  notify:
+    - restart_auditd
+
+- name: Set syslog.conf for version different versions (2 or 3)
+  ansible.builtin.template:
+    src: syslog.conf_2.j2
+    dest: /etc/audisp/plugins.d/syslog.conf
+  when: auditd_version.stdout == "2"
+  notify:
+    - auditd_restart
+
+- name: upload new rules
+  ansible.builtin.command: "augenrules --load"
+
+- name: Configure sshd config
+  ansible.builtin.template:
+    src: sshd_config.j2
+    dest: /etc/ssh/sshd_config
+  notify:
+    - sshd_restart
+
+- name: Add LOG_UNKFAIL_ENAB setting
+  ansible.builtin.lineinfile:
+    path: /etc/login.defs
+    line: 'LOG_UNKFAIL_ENAB yes'
+  notify:
+    - sshd_restart
+
+- name: Add FAILLOG_ENAB setting
+  ansible.builtin.lineinfile:
+    path: /etc/login.defs
+    line: 'FAILLOG_ENAB yes'
+  notify:
+    - sshd_restart
+
+- name: Add LOG_OK_LOGINS setting
+  ansible.builtin.lineinfile:
+    path: /etc/login.defs
+    line: 'LOG_OK_LOGINS yes'
+  notify:
+    - sshd_restart
+
+- name: Copy script_logger.sh to host
+  ansible.builtin.copy:
+    src: script_logger.sh
+    dest: /home/ansible/script_logger.sh
+    mode: ugo+x
+
+- name: Run script_logger.sh
+  ansible.builtin.script: /home/ansible/script_logger.sh
+
+- name: Configure sshd config
+  ansible.builtin.template:
+    src: auditd.conf.j2
+    dest: /etc/rsyslog.d/security.conf
+
+- name: Set autostart for auditd
+  ansible.builtin.service:
+    name: auditd
+    state: restarted
+    enabled: yes
+
+- name: Set autostart for auditd
+  ansible.builtin.service:
+    name: rsyslog
+    state: restarted
+    enabled: yes

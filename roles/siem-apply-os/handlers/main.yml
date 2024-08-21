@@ -1,0 +1,11 @@
+---
+# handlers file for siem-apply-os
+- name: sshd_restart
+  ansible.builtin.service:
+    name: ssh
+    state: restarted
+
+- name: auditd_restart
+  ansible.builtin.service:
+    name: auditd
+    state: restarted

@@ -1,0 +1,23 @@
+$EscapeControlCharactersOnRecieve off
+$RepeatdMsgReduction off
+$PreserverFQDN on
+
+$template audispd,"%TIMESTAMP% %HOSTNAME% audispd: node={{ ansible_default_ipv4.address }} %msg%"
+
+module(load="imark" interval="600")
+
+if $programname == "sshd" and ($msg contains "Accepted password" 
+or $msg contains "Accepted keyboard" 
+or $msg contains "Accepted publickey" 
+or $msg contains "Disconnected from " 
+or $msg contains "Failed password" 
+or $msg contains "Failed publickey" 
+or $msg contains "Failed none") then @@{{ broker_address }}:{{ broker_port }}
+if $programname == "login" then @@{{ broker_address }}:{{ broker_port }}
+if $programname == "sudo" then @@{{ broker_address }}:{{ broker_port }}
+:programname, contains, "audispd"
+@@{{ broker_address }}:{{ broker_port }};audispd
+:programname, contains, "audisp-syslog"
+@@{{ broker_address }}:{{ broker_port }};audispd
+:msg, contains, "promiscuous mode" @@{{ broker_address }}:{{ broker_port }}
+:msg, contains, "USB Mass Storage" @@{{ broker_address }}:{{ broker_port }}

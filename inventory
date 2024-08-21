@@ -15,6 +15,8 @@ nexus       ansible_host=10.210.2.103 hostname=nexus
 ansible_user=ansible
 ansible_ssh_private_key_file=/home/ansible/.ssh/id_rsa
 TZ=Asia/Almaty
+broker_port=517
+broker_address=1.1.1.1
 
 [runtime]
 sv1ndc

@@ -10,18 +10,5 @@
     - ansible.builtin.import_role:
         name: roles/repositories
 
-- name: Execute Sonatype Nexus Deploy
-  hosts: sonatype
-  become: true
-  tasks:
     - ansible.builtin.import_role:
-        name: roles/sonatype-nexus-deploy
-      when: groups['sonatype'] | length > 0
-
-- name: Execute Sonatype Nexus Deploy
-  hosts: docker
-  become: true
-  tasks:
-    - ansible.builtin.import_role:
-        name: roles/docker-install
-      when: groups['docker'] | length > 0
+        name: roles/siem-apply-os

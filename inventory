@@ -15,7 +15,7 @@ nexus       ansible_host=10.210.2.103 hostname=nexus
 ansible_user=ansible
 ansible_ssh_pass=
 ansible_ssh_private_key_file=/home/ansible/.ssh/id_rsa
-broker_address=10.10.10.10
+broker_address=10.9.43.71
 broker_port=517
 [runtime]
 sv1ndc
